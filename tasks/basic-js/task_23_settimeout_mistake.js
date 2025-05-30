@@ -1,0 +1,10 @@
+/**
+ * Исправить ошибку в цикле с setTimeout:
+ *
+ */
+
+for (var i = 0; i < 10; i++) {
+  setTimeout(function () {
+    console.log('index', i);
+  }, 3000);
+}
