@@ -8,3 +8,21 @@
  * Не используйте if, else, ?, тернарный оператор в теле функции.
  *
  */
+
+// First Variant
+function ifElse(condition, thenFn, elseFn) {
+    while (condition) {
+        thenFn();
+        return;
+    }
+    elseFn();
+}
+
+// Second Variant
+function ifElse(condition, thenFn, elseFn) {
+    for (let i = 0; condition; i++) {
+        thenFn();
+        return;
+    }
+    elseFn();
+}
