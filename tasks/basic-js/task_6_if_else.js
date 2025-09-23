@@ -26,3 +26,15 @@ function ifElse(condition, thenFn, elseFn) {
     }
     elseFn();
 }
+
+// 3 Variant
+function ifElse(condition, thenFn, elseFn) {
+    return Boolean(condition) && (thenFn() || true) || elseFn();
+}
+
+// 4 Variant
+function ifElse(condition, thenFn, elseFn) {
+    const functions = [elseFn, thenFn];
+    const index = Number(Boolean(condition))
+    return functions[index]();
+}
