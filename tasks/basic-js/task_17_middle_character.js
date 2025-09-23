@@ -10,6 +10,7 @@ Examples:
 "A" --> "A"
  */
 
+// Variant 1
 function middleCharacter(text) {
     if (text.length % 2 === 0) {
         return text.slice(text.length / 2 - 1, text.length / 2 + 1);
@@ -17,4 +18,10 @@ function middleCharacter(text) {
     else {
         return text.slice(text.length / 2, text.length / 2 + 1);
     }
+}
+
+// Variant 2
+function middleCharacter(text) {
+    const mid = Math.floor((text.length - 1) / 2);
+    return text.substring(mid, text.length - mid);
 }
