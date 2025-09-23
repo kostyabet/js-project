@@ -4,5 +4,5 @@
  */
 
 function getLastNItems(arr, n) {
-    return arr.splice(0, n);
+    return [...arr].splice(arr.length - n, arr.length - 1);
 }
