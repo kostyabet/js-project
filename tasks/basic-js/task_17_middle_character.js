@@ -9,3 +9,12 @@ Examples:
 "middle" --> "dd"
 "A" --> "A"
  */
+
+function middleCharacter(text) {
+    if (text.length % 2 === 0) {
+        return text.slice(text.length / 2 - 1, text.length / 2 + 1);
+    }
+    else {
+        return text.slice(text.length / 2, text.length / 2 + 1);
+    }
+}
