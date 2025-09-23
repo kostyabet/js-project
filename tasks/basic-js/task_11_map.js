@@ -3,6 +3,7 @@
  *
  */
 
+// Я хочу плакать :(
 class Map {
     #obj = [];
 
@@ -32,4 +33,13 @@ class Map {
     clear() {
         this.#obj = [];
     }
+}
+
+// реализация метода .map()
+function customMap(arr, callbackfn) {
+    const result = [];
+    for (let i = 0; i < arr.length; i++) {
+        result.push(callbackfn(arr[i]))
+    }
+    return result;
 }
