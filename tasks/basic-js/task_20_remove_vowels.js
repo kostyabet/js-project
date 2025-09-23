@@ -5,10 +5,11 @@
 
 function removeVowels(str) {
     const vowels = ['a', 'e', 'i', 'o', 'u', 'y']
-    const lStr = str.toLowerCase();
     let result = '';
-    for (let i = 0; i < lStr.length; i++) {
-        if (!vowels.includes(lStr[i])) result += lStr[i];
+    for (let i = 0; i < str.length; i++) {
+        if (!vowels.includes(str[i].toLowerCase())) result += str[i];
     }
     return result;
 }
+
+console.log(removeVowels("Hello World"));
