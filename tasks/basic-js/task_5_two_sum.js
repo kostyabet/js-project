@@ -34,9 +34,28 @@ Follow-up: Can you come up with an algorithm that is less than O(n2) time comple
  */
 
 function findTargetIndex(nums, target) {
-    for (let i = 0; i < nums.length - 1; i++) {
-        for (let j = i + 1; j < nums.length; j++) {
-            if (nums[i] + nums[j] === target) return [i, j];
+    const indexes = {};
+    for (let i = 0; i < nums.length; i++) {
+        if (!indexes[nums[i]]) {
+            indexes[nums[i]] = [i];
+        } else {
+            indexes[nums[i]].push(i);
         }
     }
+
+    for (let i = 0; i < nums.length; i++) {
+        const cur = target - nums[i];
+
+        if (indexes[cur]) {
+            if (cur === nums[i]) {
+                if (indexes[cur].length > 1) {
+                    return [indexes[cur][0], indexes[cur][1]];
+                }
+            } else {
+                return [i, indexes[cur][0]];
+            }
+        }
+    }
+
+    return [];
 }
