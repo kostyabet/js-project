@@ -39,7 +39,7 @@ class Map {
 function customMap(arr, callbackfn) {
     const result = [];
     for (let i = 0; i < arr.length; i++) {
-        result.push(callbackfn(arr[i]))
+        result.push(result.push(callbackfn(arr[i], i, arr)))
     }
     return result;
 }
