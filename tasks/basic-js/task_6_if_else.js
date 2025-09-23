@@ -29,7 +29,8 @@ function ifElse(condition, thenFn, elseFn) {
 
 // 3 Variant
 function ifElse(condition, thenFn, elseFn) {
-    return Boolean(condition) && (thenFn() || true) || elseFn();
+    const result = Boolean(condition) && {value: thenFn()} || {value: elseFn()};
+    return result.value;
 }
 
 // 4 Variant
