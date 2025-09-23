@@ -12,5 +12,10 @@ Write a code that gives out the total amount for different days(d).
  */
 
 function cost(d) {
-    return d * 40 - (d >= 7 ? 50 : d >= 3 ? 20 : 0);
+    const result = d * 40;
+    if (d >= 7)
+        return result - 50;
+    if (d >= 3)
+        return result - 20;
+    return result;
 }
