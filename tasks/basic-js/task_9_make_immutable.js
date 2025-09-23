@@ -4,5 +4,5 @@
  */
 
 function makeImmutable(obj) {
-    return Object.freeze(JSON.parse(JSON.stringify(obj)));
+    return Object.freeze([...obj]);
 }
