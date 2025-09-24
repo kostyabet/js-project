@@ -15,3 +15,9 @@ You have to create the function fibonacci that receives n and returns f(n). You 
 
 
 */
+
+
+function calc(n) {
+    if (n <= 2) return 1;
+    return calc(n-1) + calc(n-2);
+}
