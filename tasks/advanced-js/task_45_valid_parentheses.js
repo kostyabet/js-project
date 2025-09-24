@@ -39,3 +39,47 @@ Constraints:
 1 <= s.length <= 104
 s consists of parentheses only '()[]{}'.
 */
+
+function validBrackets(str) {
+    let brackets = {
+        '()': 0,
+        '[]': 0,
+        '{}': 0,
+    }
+    for (let i = 0; i < str.length; i++) {
+        switch (str.charAt(i)) {
+            case '{': {
+                brackets['{}']++;
+                break;
+            }
+            case '[': {
+                brackets['[]']++;
+                break;
+            }
+            case '(': {
+                brackets['()']++;
+                break;
+            }
+            case '}':
+                if (brackets['{}'] === 0) return false;
+                brackets['{}']--;
+                break;
+            case ']': {
+                if (brackets['[]'] === 0) return false;
+                brackets['[]']--;
+                break;
+            }
+            case ')': {
+                if (brackets['()'] === 0) return false;
+                brackets['()']--;
+                break;
+            }
+        }
+    }
+    return brackets['()'] === 0 && brackets['[]'] === 0 && brackets['{}'] === 0;
+}
+
+console.log(validBrackets("()"));     // true
+console.log(validBrackets("()[]{}")); // true
+console.log(validBrackets("(]"));     // false
+console.log(validBrackets("([])"));   // true
