@@ -10,3 +10,26 @@ cachedFunction('foo', 'bar'); // complex function should be executed
 cachedFunction('foo', 'bar'); // complex function should not be invoked again, instead the cached result should be returned
 cachedFunction('foo', 'baz'); // should be executed, because the method wasn't invoked before with these arguments
 */
+
+function cache(fn) {
+    let func = fn;
+    let map = new Map();
+    return function memo(...args) {
+        const keys = JSON.stringify(args);
+        if (map.has(keys)) {
+            console.log('from cache');
+            return map.get(keys);
+        } else {
+            console.log('recalc');
+            const result = func(...args);
+            map.set(keys, result);
+            return result;
+        }
+    }
+}
+
+var complexFunction = function(arg1, arg2) { return arg1 + arg2; };
+var cachedFunction = cache(complexFunction);
+console.log(cachedFunction('foo', 'bar')); // complex function should be executed
+console.log(cachedFunction('foo', 'bar')); // complex function should not be invoked again, instead the cached result should be returned
+console.log(cachedFunction('foo', 'baz')); // should be executed, because the method wasn't invoked before with these arguments
