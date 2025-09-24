@@ -25,3 +25,29 @@ Constraints:
 All the integers in nums are unique.
 nums is sorted in ascending order.
 */
+
+function binarySearch(arr, target) {
+    if (arr.length === 1) {
+        if (arr[0] === target) return 0;
+        return -1;
+    }
+
+    const key = Math.floor(arr.length / 2);
+    const current = arr[key];
+    if (current > target) {
+        const result = binarySearch([...arr].slice(0, key), target);
+        return result === -1 ? -1 : result;
+    } else if (current < target) {
+        const result = binarySearch([...arr].slice(key + 1, arr.length), target);
+        return result === -1 ? -1 : key + result + 1;
+    }
+    return key;
+}
+
+console.log(binarySearch([-1,0,3,5,9,12], -1));
+console.log(binarySearch([-1,0,3,5,9,12], 0));
+console.log(binarySearch([-1,0,3,5,9,12], 3));
+console.log(binarySearch([-1,0,3,5,9,12], 5));
+console.log(binarySearch([-1,0,3,5,9,12], 9));
+console.log(binarySearch([-1,0,3,5,9,12], 12));
+console.log(binarySearch([-1,0,3,5,9,12], 2));
