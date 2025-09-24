@@ -4,3 +4,8 @@ Given an input n, write a function always that returns a function which returns 
 var three = always(3);
 three(); // returns 3
  */
+
+function always(n) {
+    let param = n;
+    return () => param;
+}

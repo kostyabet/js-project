@@ -23,3 +23,18 @@ Code Examples
     prefill("xyz", 1)
       --> throws TypeError with message "xyz is invalid"
  */
+
+// with loops
+function prefill1(n, v) {
+    const result = [];
+    for (let i = 0; i < n; i++) {
+        result.push(v);
+    }
+    return result;
+}
+
+// without loops
+function prefill2(n, v) {
+    if (n === 0) return [];
+    return prefill2(n-1, v).concat(v);
+}

@@ -10,3 +10,12 @@ Alternatively, if you rent the car for 3 or more days, you get $20 off your tota
 
 Write a code that gives out the total amount for different days(d).
  */
+
+function cost(d) {
+    const result = d * 40;
+    if (d >= 7)
+        return result - 50;
+    if (d >= 3)
+        return result - 20;
+    return result;
+}

@@ -10,3 +10,28 @@ obj.getSecret() # returns 5
 obj.setSecret(2)
 obj.getSecret() # returns 2
  */
+
+// Variant 1
+function createSecretHolder(secret) {
+    let sold = secret;
+    this.getSecret = () => {
+        return sold;
+    }
+    this.setSecret = (secret) => {
+        sold = secret;
+    }
+    return this;
+}
+
+// Variant 2
+function createSecretHolder(secret) {
+    let sold = secret;
+    return {
+        getSecret() {
+            return sold;
+        },
+        setSecret(secret) {
+            sold = secret;
+        }
+    }
+}

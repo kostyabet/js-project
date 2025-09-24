@@ -9,3 +9,7 @@
  * getFloatOnString('abcdefgh');      // → NaN
  * getFloatOnString('');              // → NaN
  */
+function getFloatOnString(str) {
+    const result = parseFloat(str);
+    return isNaN(result) ? NaN : result;
+}

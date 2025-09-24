@@ -8,3 +8,34 @@
  * Не используйте if, else, ?, тернарный оператор в теле функции.
  *
  */
+
+// First Variant
+function ifElse(condition, thenFn, elseFn) {
+    while (condition) {
+        thenFn();
+        return;
+    }
+    elseFn();
+}
+
+// Second Variant
+function ifElse(condition, thenFn, elseFn) {
+    for (let i = 0; condition; i++) {
+        thenFn();
+        return;
+    }
+    elseFn();
+}
+
+// 3 Variant
+function ifElse(condition, thenFn, elseFn) {
+    const result = Boolean(condition) && {value: thenFn()} || {value: elseFn()};
+    return result.value;
+}
+
+// 4 Variant
+function ifElse(condition, thenFn, elseFn) {
+    const functions = [elseFn, thenFn];
+    const index = Number(Boolean(condition))
+    return functions[index]();
+}

@@ -5,3 +5,12 @@
  * которые являются строками
  *
  */
+
+function filterStrings(arr) {
+    const result = [];
+    arr.forEach((e) => {
+        if (typeof e === "string")
+            result.push(e);
+    })
+    return result;
+}

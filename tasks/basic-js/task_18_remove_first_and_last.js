@@ -16,3 +16,9 @@ Examples
 "1"    =>  NULL
 "1,2"  =>  NULL
  */
+
+function removeFirstAndLast(text) {
+    const arr = text.split(',');
+    const newText = arr.slice(1, arr.length - 1).join(' ');
+    return newText ? newText : null;
+}

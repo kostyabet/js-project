@@ -11,3 +11,7 @@ Note: if this seems too simple for you try the next level
 
 Note2: the input data can be: boolean array, array of objects, array of string arrays, array of number arrays... 
  */
+
+function joinArray(arr) {
+    return arr.join(',')
+}
