@@ -19,3 +19,11 @@ const tree = {
 Результат: flattenTree(tree) → [1, 2, 3, 4, 5]
                         
 */
+
+function flattenTree(tree) {
+    const result = [tree.value];
+    for (let i = 0; i < tree.children.length; i++) {
+        result.push(...flattenTree(tree.children[i])) ;
+    }
+    return result;
+}
