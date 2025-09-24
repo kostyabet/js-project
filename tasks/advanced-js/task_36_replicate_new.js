@@ -47,3 +47,19 @@ Your mission: write a function nouveau (that's French for "new") which takes one
 
 var john = nouveau(Person, 'John', 30); // same result as above
 */
+
+function Person(name, age) {
+    this.name = name;
+    this.age = age;
+}
+Person.prototype.introduce = function() {
+    return `My name is ${this.name} and I am ${this.age}`;
+}
+
+function nouveau(Constructor, ...args) {
+    const instance = Object.create(Constructor.prototype);
+
+    const object = Constructor.apply(instance, args);
+
+    return !object ? instance : object;
+}
