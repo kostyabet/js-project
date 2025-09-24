@@ -7,3 +7,23 @@ Examples
 [5, 8, 6, 3, 4]  =>  [3, 8, 6, 5, 4]
 [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]  =>  [1, 8, 3, 6, 5, 4, 7, 2, 9, 0]
 */
+
+function bubbleOddSort(array) {
+    const arr = [...array];
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] % 2 === 0) continue;
+        for (let j = i + 1; j < arr.length; j++) {
+            if (arr[j] % 2 === 0) continue;
+            if (arr[i] > arr[j]) {
+                let temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+    }
+    return arr;
+}
+
+console.log(bubbleOddSort([7, 1]));
+console.log(bubbleOddSort([5, 8, 6, 3, 4]));
+console.log(bubbleOddSort([9, 8, 7, 6, 5, 4, 3, 2, 1, 0]));
