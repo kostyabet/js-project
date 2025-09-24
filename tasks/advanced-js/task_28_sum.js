@@ -4,3 +4,12 @@
 пока не будет вызвана без аргументов - 
 тогда возвращается сумма переданных ранее чисел (sum(2)(5)(9)())
 */
+
+function sum(n1) {
+    let result = n1;
+    return function calc(n2) {
+        if (!n2) return result;
+        result += n2;
+        return calc;
+    }
+}
