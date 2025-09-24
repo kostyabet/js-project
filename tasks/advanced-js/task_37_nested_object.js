@@ -18,3 +18,29 @@ obj.hash('person.history.bio'); // { funFact: 'I like fishing.' }
 obj.hash('person.history.homeStreet'); // undefined
 obj.hash('person.animal.pet.needNoseAntEater'); // undefined
 */
+
+Object.prototype.hash = function(string) {
+    const nodes = string.split(".");
+    let node = this;
+    for (let i = 0; i < nodes.length; i++) {
+        node = node?.[nodes[i]] || undefined;
+    }
+    return node || undefined;
+}
+
+var obj = {
+    person: {
+        name: 'joe',
+        history: {
+            hometown: 'bratislava',
+            bio: {
+                funFact: 'I like fishing.'
+            }
+        }
+    }
+};
+
+console.log(obj.hash('person.name')); // 'joe'
+console.log(obj.hash('person.history.bio')); // { funFact: 'I like fishing.' }
+console.log(obj.hash('person.history.homeStreet')); // undefined
+console.log(obj.hash('person.animal.pet.needNoseAntEater')); // undefined
