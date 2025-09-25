@@ -40,6 +40,7 @@ Constraints:
 s consists of parentheses only '()[]{}'.
 */
 
+// Variant 1
 function validBrackets(str) {
     let brackets = {
         '()': 0,
@@ -77,6 +78,31 @@ function validBrackets(str) {
         }
     }
     return brackets['()'] === 0 && brackets['[]'] === 0 && brackets['{}'] === 0;
+}
+
+// Variant 2
+function validBrackets(str) {
+    const stack = [];
+    for (let i = 0; i < str.length; i++) {
+        switch(str[i].charAt(0)) {
+            case '(':
+            case '[':
+            case '{': {
+                stack.push(str[i].charAt(0));
+                break;
+            }
+
+            case ')':
+            case ']':
+            case '}': {
+                const current = stack.pop();
+                if (current === '(' && str[i].charAt(0) !== ')') return false;
+                if (current === '[' && str[i].charAt(0) !== ']') return false;
+                if (current === '{' && str[i].charAt(0) !== '}') return false;
+            }
+        }
+    }
+    return stack.length === 0;
 }
 
 console.log(validBrackets("()"));     // true
