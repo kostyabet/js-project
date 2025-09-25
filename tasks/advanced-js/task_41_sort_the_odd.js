@@ -8,6 +8,7 @@ Examples
 [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]  =>  [1, 8, 3, 6, 5, 4, 7, 2, 9, 0]
 */
 
+// Variant 1
 function bubbleOddSort(array) {
     const arr = [...array];
     for (let i = 0; i < arr.length; i++) {
@@ -22,6 +23,21 @@ function bubbleOddSort(array) {
         }
     }
     return arr;
+}
+
+// Variant 2
+function bubbleOddSort(array) {
+    const sortedOdd = [...array]
+        .filter(item => item % 2 !== 0)
+        .sort((a, b) => a - b);
+
+    let sortedId = 0;
+    for (let i = 0; i < array.length; i++) {
+        if (array[i] % 2 === 1) {
+            array[i] = sortedOdd[sortedId++];
+        }
+    }
+    return array;
 }
 
 console.log(bubbleOddSort([7, 1]));
