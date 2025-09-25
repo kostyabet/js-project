@@ -21,7 +21,7 @@ const container = document.getElementById("container");
 
 const form = document.createElement("form");
 form.setAttribute("method", "POST");
-form.setAttribute("action", "/");
+form.setAttribute("action", "#");
 
 const firstName = document.createElement("input");
 firstName.setAttribute("type", "text");
@@ -42,7 +42,7 @@ const sendButton = document.createElement("button");
 sendButton.setAttribute("type", "submit");
 sendButton.textContent = "Send";
 
-sendButton.addEventListener("click", () => {
+form.addEventListener("submit", (e) => {
     const isValid =
         firstName.value.length > 0 &&
         email.value.length > 0 &&
@@ -55,6 +55,8 @@ sendButton.addEventListener("click", () => {
     } else {
         alert("Please enter some data in each field!");
     }
+
+    e.preventDefault();
 })
 
 form.append(firstName, email, message, sendButton);
