@@ -19,12 +19,11 @@ function cache(fn) {
         if (map.has(keys)) {
             console.log('from cache');
             return map.get(keys);
-        } else {
-            console.log('recalc');
-            const result = func(...args);
-            map.set(keys, result);
-            return result;
         }
+        console.log('recalc');
+        const result = func(...args);
+        map.set(keys, result);
+        return result;
     }
 }
 
