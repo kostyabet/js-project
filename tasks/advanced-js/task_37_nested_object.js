@@ -23,9 +23,9 @@ Object.prototype.hash = function(string) {
     const nodes = string.split(".");
     let node = this;
     for (let i = 0; i < nodes.length; i++) {
-        node = node?.[nodes[i]] || undefined;
+        node = node?.[nodes[i]];
     }
-    return node || undefined;
+    return node;
 }
 
 var obj = {
@@ -44,3 +44,6 @@ console.log(obj.hash('person.name')); // 'joe'
 console.log(obj.hash('person.history.bio')); // { funFact: 'I like fishing.' }
 console.log(obj.hash('person.history.homeStreet')); // undefined
 console.log(obj.hash('person.animal.pet.needNoseAntEater')); // undefined
+
+var obj2 = { a: { b: 0 } };
+console.log(obj2.hash('a.b')); // должно 0
