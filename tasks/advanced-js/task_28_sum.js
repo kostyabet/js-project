@@ -6,10 +6,14 @@
 */
 
 function sum(n1) {
+    if (!n1) return 0;
     let result = n1;
     return function calc(n2) {
-        if (!n2) return result;
+        if (n2 === undefined) return result;
         result += n2;
         return calc;
     }
 }
+
+console.log(sum(1)(2)(0)(4)()); // должно быть 7
+console.log(sum()); // должно быть 0
