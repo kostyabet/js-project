@@ -14,7 +14,7 @@ Function.prototype.myBind = function(context, ...boundArgs) {
     const fn = this;
 
     return function() {
-        return fn.call(context, boundArgs);
+        return fn.call(context, ...boundArgs);
     }
 }
 function greet(message) {
