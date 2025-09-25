@@ -26,6 +26,7 @@ All the integers in nums are unique.
 nums is sorted in ascending order.
 */
 
+// Variant 1
 function binarySearch(arr, target) {
     if (arr.length === 1) {
         if (arr[0] === target) return 0;
@@ -40,6 +41,23 @@ function binarySearch(arr, target) {
     } else if (current < target) {
         const result = binarySearch([...arr].slice(key + 1, arr.length), target);
         return result === -1 ? -1 : key + result + 1;
+    }
+    return key;
+}
+
+// Variant 2
+function binarySearch(arr, target, i = 0, j = arr.length - 1) {
+    if (i === j) {
+        if (arr[i] === target) return i;
+        return -1;
+    }
+
+    const key = i + Math.floor((j - i) / 2);
+    const current = arr[key];
+    if (current > target) {
+        return binarySearch(arr, target, i, key - 1);
+    } else if (current < target) {
+        return binarySearch(arr, target, key + 1, j);
     }
     return key;
 }
