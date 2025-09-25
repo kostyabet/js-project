@@ -19,6 +19,10 @@ const container = document.getElementById('container');
 let theme = localStorage.getItem('theme') || 'light';
 
 const button = document.createElement('button');
+button.style.border = '2px solid gray';
+button.style.borderRadius = '5px';
+button.style.padding = '3px 7px';
+
 renderButtonContent();
 renderTheme();
 function renderButtonContent() {
@@ -28,6 +32,21 @@ function renderTheme() {
     const body = document.getElementsByTagName('body')[0];
     body.classList.remove(theme === 'light' ? 'dark' : 'light');
     body.classList.add(theme === 'light' ? 'light' : 'dark');
+
+    switch(theme) {
+        case 'light': {
+            body.style.backgroundColor = 'white';
+            button.style.backgroundColor = 'black';
+            button.style.color = 'white';
+            break;
+        }
+        case 'dark': {
+            body.style.backgroundColor = 'black';
+            button.style.backgroundColor = 'white';
+            button.style.color = 'black';
+            break;
+        }
+    }
 }
 button.addEventListener('click', (e) => {
     theme = theme === 'light' ? 'dark' : 'light';
