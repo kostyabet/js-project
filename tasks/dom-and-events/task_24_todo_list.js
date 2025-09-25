@@ -36,10 +36,6 @@ class TodoList {
         this.addEventListeners();
     }
 
-    renderButton(methodName, text) {
-        return `<button data-method="${methodName}">${text}</button>`;
-    }
-
     renderTasks() {
         if (this.#tasks.length === 0) {
             return '<div>Список задач пуст</div>';
