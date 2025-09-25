@@ -23,10 +23,10 @@ const form = document.createElement("form");
 form.setAttribute("method", "POST");
 form.setAttribute("action", "/");
 
-const name = document.createElement("input");
-name.setAttribute("type", "text");
-name.setAttribute("placeholder", "Name");
-name.setAttribute("name", "name");
+const firstName = document.createElement("input");
+firstName.setAttribute("type", "text");
+firstName.setAttribute("placeholder", "Name");
+firstName.setAttribute("name", "name");
 
 const email = document.createElement("input");
 email.setAttribute("type", "email");
@@ -44,11 +44,11 @@ sendButton.textContent = "Send";
 
 sendButton.addEventListener("click", () => {
     const isValid =
-        name.value.length > 0 &&
+        firstName.value.length > 0 &&
         email.value.length > 0 &&
         message.value.length > 0;
     if (isValid) {
-        name.value = "";
+        firstName.value = "";
         email.value = "";
         message.value = "";
         alert("All is OK!")
@@ -57,5 +57,5 @@ sendButton.addEventListener("click", () => {
     }
 })
 
-form.append(name, email, message, sendButton);
+form.append(firstName, email, message, sendButton);
 container.append(form);
