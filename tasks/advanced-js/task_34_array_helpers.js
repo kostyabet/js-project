@@ -21,3 +21,34 @@ numbers.sum();     // must return 15
 numbers.even();    // must return [2, 4]
 numbers.odd();     // must return [1, 3, 5]
 */
+
+Array.prototype.square = function() {
+    return [...this].map(num => num * num);
+}
+Array.prototype.cube = function() {
+    return [...this].map(num => num * num * num);
+}
+Array.prototype.average = function() {
+    return this.sum() / this.length;
+}
+Array.prototype.sum = function() {
+    let sum = 0;
+    for (let i = 0; i < this.length; i++) {
+        sum += this[i];
+    }
+    return sum;
+}
+Array.prototype.even = function() {
+    const result = [];
+    for (let i = 0; i < this.length; i++) {
+        if (this[i] % 2 === 0) result.push(this[i]);
+    }
+    return result;
+}
+Array.prototype.odd = function() {
+    const result = [];
+    for (let i = 0; i < this.length; i++) {
+        if (this[i] % 2 !== 0) result.push(this[i]);
+    }
+    return result;
+}

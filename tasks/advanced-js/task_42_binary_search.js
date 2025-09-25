@@ -25,3 +25,47 @@ Constraints:
 All the integers in nums are unique.
 nums is sorted in ascending order.
 */
+
+// Variant 1
+function binarySearch(arr, target) {
+    if (arr.length === 1) {
+        if (arr[0] === target) return 0;
+        return -1;
+    }
+
+    const key = Math.floor(arr.length / 2);
+    const current = arr[key];
+    if (current > target) {
+        const result = binarySearch([...arr].slice(0, key), target);
+        return result === -1 ? -1 : result;
+    } else if (current < target) {
+        const result = binarySearch([...arr].slice(key + 1, arr.length), target);
+        return result === -1 ? -1 : key + result + 1;
+    }
+    return key;
+}
+
+// Variant 2
+function binarySearch(arr, target, i = 0, j = arr.length - 1) {
+    if (i === j) {
+        if (arr[i] === target) return i;
+        return -1;
+    }
+
+    const key = i + Math.floor((j - i) / 2);
+    const current = arr[key];
+    if (current > target) {
+        return binarySearch(arr, target, i, key - 1);
+    } else if (current < target) {
+        return binarySearch(arr, target, key + 1, j);
+    }
+    return key;
+}
+
+console.log(binarySearch([-1,0,3,5,9,12], -1));
+console.log(binarySearch([-1,0,3,5,9,12], 0));
+console.log(binarySearch([-1,0,3,5,9,12], 3));
+console.log(binarySearch([-1,0,3,5,9,12], 5));
+console.log(binarySearch([-1,0,3,5,9,12], 9));
+console.log(binarySearch([-1,0,3,5,9,12], 12));
+console.log(binarySearch([-1,0,3,5,9,12], 2));

@@ -39,3 +39,73 @@ Constraints:
 1 <= s.length <= 104
 s consists of parentheses only '()[]{}'.
 */
+
+// Variant 1
+function validBrackets(str) {
+    let brackets = {
+        '()': 0,
+        '[]': 0,
+        '{}': 0,
+    }
+    for (let i = 0; i < str.length; i++) {
+        switch (str.charAt(i)) {
+            case '{': {
+                brackets['{}']++;
+                break;
+            }
+            case '[': {
+                brackets['[]']++;
+                break;
+            }
+            case '(': {
+                brackets['()']++;
+                break;
+            }
+            case '}':
+                if (brackets['{}'] === 0) return false;
+                brackets['{}']--;
+                break;
+            case ']': {
+                if (brackets['[]'] === 0) return false;
+                brackets['[]']--;
+                break;
+            }
+            case ')': {
+                if (brackets['()'] === 0) return false;
+                brackets['()']--;
+                break;
+            }
+        }
+    }
+    return brackets['()'] === 0 && brackets['[]'] === 0 && brackets['{}'] === 0;
+}
+
+// Variant 2
+function validBrackets(str) {
+    const stack = [];
+    for (let i = 0; i < str.length; i++) {
+        switch(str[i].charAt(0)) {
+            case '(':
+            case '[':
+            case '{': {
+                stack.push(str[i].charAt(0));
+                break;
+            }
+
+            case ')':
+            case ']':
+            case '}': {
+                const current = stack.pop();
+                if (current === '(' && str[i].charAt(0) !== ')') return false;
+                if (current === '[' && str[i].charAt(0) !== ']') return false;
+                if (current === '{' && str[i].charAt(0) !== '}') return false;
+            }
+        }
+    }
+    return stack.length === 0;
+}
+
+console.log(validBrackets("()"));     // true
+console.log(validBrackets("()[]{}")); // true
+console.log(validBrackets("(]"));     // false
+console.log(validBrackets("([])"));   // true

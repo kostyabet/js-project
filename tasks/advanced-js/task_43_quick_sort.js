@@ -23,3 +23,29 @@ Constraints:
 1 <= nums.length <= 5 * 104
 -5 * 104 <= nums[i] <= 5 * 104
 */
+
+function quickSort(arr) {
+    if (arr.length <= 1) return arr;
+    let i = -1;
+    let pivot = arr.length - 1;
+    for (let j= 0; j < pivot; j++) {
+        if (arr[j] < arr[pivot]) {
+            swap(arr, ++i, j);
+        }
+    }
+    swap(arr, ++i, pivot);
+    pivot = i;
+
+    return [ ...quickSort([...arr].slice(0, pivot)),
+             arr[pivot],
+             ...quickSort([...arr].slice(pivot + 1, arr.length))];
+}
+
+function swap(arr, i, j) {
+    let temp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = temp;
+}
+
+console.log(quickSort([8, 2, 4, 7, 1, 3, 9, 6, 5]));
+console.log(quickSort([8, 2, 4, 7, 1, 3, 9, 6]));
