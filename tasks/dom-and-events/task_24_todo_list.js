@@ -89,3 +89,5 @@ class TodoList {
         this.render();
     }
 }
+
+const todoList = new TodoList();
