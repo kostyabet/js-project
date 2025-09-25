@@ -25,8 +25,7 @@ Constraints:
 */
 
 function quickSort(arr) {
-    if (arr.length === 1) return arr;
-    if (arr.length === 0) return [];
+    if (arr.length <= 1) return arr;
     let i = -1;
     let pivot = arr.length - 1;
     for (let j= 0; j < pivot; j++) {
