@@ -12,3 +12,15 @@ compose(f , g)(x)
 => f( g( x ) )
 This kata is not available in haskell; that would be too easy!
 */
+
+function compose(...fns) {
+    return (...args) => fns.reduceRight((acc, fn) => fn(acc), ...args);
+}
+
+const g = (n) => {
+    return n * 2;
+}
+const f = (n) => {
+    return n * 2;
+}
+console.log(compose(f, g)(2)); // 8
