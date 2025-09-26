@@ -17,7 +17,7 @@ function digitsSum(num) {
         return current % 10 + curSum(Math.floor(current / 10));
     }
     let result = curSum(num);
-    while (result / 10 > 1) {
+    while (result > 10) {
         result = curSum(result);
     }
     return result;
