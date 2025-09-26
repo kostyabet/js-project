@@ -31,3 +31,39 @@ adderSpy.wasCalledWith(0); // false
 adderSpy.returned(8); // true
 adderSpy.returned(0); // false
 */
+
+function spyOn(func) {
+    let callCount = 0;
+    let calls = [];
+    let results = [];
+
+    function spy(...args) {
+        callCount++;
+        calls.push(...args);
+        const result = func(...args);
+        results.push(result);
+        return result;
+    }
+    spy.callCount = function() {
+        return callCount;
+    }
+    spy.wasCalledWith = function(val) {
+        return calls.includes(val);
+    }
+    spy.returned = function(val) {
+        return results.includes(val);
+    }
+
+    return spy;
+}
+
+function adder(n1, n2) { return n1 + n2; }
+var adderSpy = spyOn( adder );
+
+adderSpy(2, 4); // returns 6
+adderSpy(3, 5); // returns 8
+console.log('Count of calls: ', adderSpy.callCount()); // 2
+console.log('Is called with 4: ', adderSpy.wasCalledWith(4)); // true
+console.log('Is called with 0: ', adderSpy.wasCalledWith(0)); // false
+console.log('Is returned 8: ', adderSpy.returned(8)); // true
+console.log('Is returned 0: ', adderSpy.returned(0)); // false
