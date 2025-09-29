@@ -12,3 +12,24 @@ compose(f , g)(x)
 => f( g( x ) )
 This kata is not available in haskell; that would be too easy!
 */
+
+function compose(...fns) {
+    return (...args) =>
+        fns.reduceRight(
+            (acc, fn, i) => i === fns.length - 1 ? fn(...acc) : fn(acc),
+            args
+        );
+}
+
+const g = (n) => {
+    return n * 2;
+}
+const f = (n) => {
+    return n * 2;
+}
+console.log(compose(f, g)(2)); // 8
+
+const sum = (a, b) => a + b;
+const square = x => x * x;
+const sumSquared = compose(square, sum);
+console.log(sumSquared(2, 3)); // 25
