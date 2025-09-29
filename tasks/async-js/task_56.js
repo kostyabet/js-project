@@ -6,13 +6,21 @@
 function deepClone(obj) {
     const result = {};
     for(let key in obj) {
-        if (
-            typeof obj[key] === 'object' &&
-            !(obj[key] instanceof Array) &&
-            !(obj[key] instanceof Set) &&
-            !(obj[key] instanceof Map) &&
-            !(obj[key] === null)
-        ) {
+        if (obj[key] instanceof Array) {
+            result[key] = [...obj[key]];
+        }
+        else if (obj[key] instanceof Set) {
+            result[key] = new Set(obj[key]);
+        }
+        else if (obj[key] instanceof Map) {
+            const newMap = new Map();
+            for (const [mapKey, mapValue] of Object.entries(obj[key])) {
+                newMap.set(mapKey, mapValue);
+            }
+            result[key] = newMap;
+        } else if (obj[key] === null) {
+            result[key] = null;
+        } else if (obj[key] === 'object') {
             result[key] = deepClone(obj[key]);
         } else {
             result[key] = obj[key];
